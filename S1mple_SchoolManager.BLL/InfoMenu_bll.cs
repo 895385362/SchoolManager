@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using S1mple_SchoolManager.Entity;
+using Newtonsoft.Json;
+using S1mple_SchoolManager.Entity.Model;
 
 namespace S1mple_SchoolManager.BLL
 {
@@ -47,39 +49,56 @@ namespace S1mple_SchoolManager.BLL
             }
 
         }
-
-        public bool Edit(Info_Menu model)
+        public bool Operation(string data)
         {
             //修改
-            if (model != null)
+            if (data != null)
             {
-                Dao.Update<Info_Menu>(model);
-            }
-            if (Dao.Save())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+                //反序列化，获取前端传递的数据添加到泛型集合
+                var list = JsonConvert.DeserializeObject<List<InfoMenuModel>>(data);
+                List<Info_Menu> menulist = new List<Info_Menu>();
+                foreach (var item in list)
+                {
+                    if (item.MenuID > 0)
+                    {
+                        Info_Menu model = GetModel(item.MenuID);
+                        if (model != null)
+                        {
+                            if (model.MenuID != 0)
+                            {
+                                model.MenuController = item.MenuController;
+                                model.MenuMethod = item.MenuMethod;
+                                model.MenuPath = item.MenuPath;
+                                model.MenuText = item.MenuText;
+                                model.SubmenuID = item.SubmenuID;
+                                menulist.Add(model);
+                            }
+                        }
+                        if (menulist.Count > 0)
+                        {
+                            Dao.Update(menulist);
+                            if (Dao.Save())
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (menulist.Count > 0)
+                        {
+                            Dao.Create(menulist);
+                            if (Dao.Save())
+                            {
+                                return true;
+                            }
+                        }
+                    }
 
-        public bool Add(Info_Menu model)
-        {
-            //添加 
-            if (model != null)
-            {
-                Dao.Create<Info_Menu>(model);
+                }
+
             }
-            if (Dao.Save())
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }

@@ -79,6 +79,8 @@
     <Compile Include="Info_Teacher.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\InfoCurriculumModel.cs" />
+    <Compile Include="Model\InfoMenuModel.cs" />
     <Compile Include="Model\InfoScheduleModel.cs" />
     <Compile Include="Model\InfoTeacherModel.cs" />
     <Compile Include="O_C_S_C.cs">

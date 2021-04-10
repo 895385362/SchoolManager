@@ -68,6 +68,16 @@ namespace S1mple_SchoolManager.Common
             }
 
         }
-
+        public static void Log(string action, string Message, string Parameter)
+        {
+            StringBuilder error = new StringBuilder(FileHelper.ReadFile(System.AppDomain.CurrentDomain.BaseDirectory + "\\error\\" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt"));
+            error.AppendLine("-------------------------------------------------------错误信息-------------------------------------------------------------" + Environment.NewLine);
+            error.AppendLine("时间：地址" + DateTime.Now + Environment.NewLine);
+            error.AppendLine("操作日志：地址" + action + Environment.NewLine);
+            error.AppendLine("参数:" + Parameter + System.Environment.NewLine);
+            error.AppendLine("错误信息:" + Message + Environment.NewLine);
+            error.AppendLine("-------------------------------------------------------END------------------------------------------------------------------" + Environment.NewLine);
+            FileHelper.WriteFile(System.AppDomain.CurrentDomain.BaseDirectory + "\\log\\" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt", error.ToString());
+        }
     }
 }

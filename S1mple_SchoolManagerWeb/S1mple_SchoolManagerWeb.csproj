@@ -130,7 +130,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\ScheduleController.cs" />
     <Compile Include="Controllers\ScheduleManagerController.cs" />
     <Compile Include="Controllers\TeacherListController.cs" />
     <Compile Include="Filter\AuthorizeFilterAttribute.cs" />
@@ -180,12 +179,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\TeacherList\TeacherList.cshtml" />
-    <Content Include="Views\Schedule\ScheduleList.cshtml" />
     <Content Include="Views\CurriculumList\CurriculumList.cshtml" />
     <Content Include="Views\ScheduleManager\ScheduleManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="log\" />
     <Folder Include="Models\" />
     <Folder Include="Views\HomePage\" />
   </ItemGroup>

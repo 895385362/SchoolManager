@@ -45,77 +45,54 @@ namespace S1mple_SchoolManager.BLL
 
         }
 
-        public bool Edit(string scheduleJson)
+        public bool Operation(string ScheduleType, string data)
         {
             //修改
-            if (scheduleJson != null)
+            if (data != null)
             {
                 //反序列化，获取前端传递的数据添加到泛型集合
-                var list = JsonConvert.DeserializeObject<List<Info_Schedule>>(scheduleJson);
-                List<Info_Schedule> updateList = new List<Info_Schedule>();
+                var list = JsonConvert.DeserializeObject<List<Info_Schedule>>(data);
+                List<Info_Schedule>schedulelist = new List<Info_Schedule>();
                 foreach (var item in list)
                 {
-                    Info_Schedule model = GetModel(item.ScheduleID);
-                    if (model != null)
+                    if (item.ScheduleID>0)
                     {
-                        if (model.ScheduleID != 0)
+                        Info_Schedule model = GetModel(item.ScheduleID);
+                        if (model != null)
                         {
-                            model.Schedule = item.Schedule;
-                            model.StartTime = item.StartTime;
-                            model.EndTime = item.EndTime;
-                            updateList.Add(model);
+                            if (model.ScheduleID != 0)
+                            {
+                                model.Schedule = item.Schedule;
+                                model.StartTime = item.StartTime;
+                                model.EndTime = item.EndTime;
+                                schedulelist.Add(model);
+                            }
+                        }
+                        if (schedulelist.Count > 0)
+                        {
+                            Dao.Update(schedulelist);
+                            if (Dao.Save())
+                            {
+                                return true;
+                            }
                         }
                     }
-                }
-
-                if (updateList.Count > 0)
-                {
-
-                    Dao.Update<List<Info_Schedule>>(updateList);
-                    if (Dao.Save())
+                    else
                     {
-                        return true;
+                        if (schedulelist.Count > 0)
+                        {
+                            Dao.Create(schedulelist);
+                            if (Dao.Save())
+                            {
+                                return true;
+                            }
+                        }
                     }
+                   
                 }
-                //Info_Schedule model = GetModel(ID);
-                //if (model != null)
-                //{
-                //    if (model.ScheduleID != 0)
-                //    {
-                //        model.Schedule = schedulemodel.Schedule;
-                //        model.StartTime = schedulemodel.StartTime;
-                //        model.EndTime = schedulemodel.EndTime;
-                //        Dao.Update(model);
-                //        if (Dao.Save())
-                //        {
-                //            return true;
-                //        }
-                //        else
-                //        {
-                //            return false;
-                //        }
-                //    }
-                //}
+               
             }
             return false;
         }
-
-        //public bool Add(InfoScheduleModel schedulemodel)
-        //{
-        //    //添加 
-        //    Info_Schedule model = GetModel(schedulemodel.ScheduleID);
-        //    if (model.ScheduleID != 0)
-        //    {
-        //        Dao.Create<InfoScheduleModel>(model);
-        //    }
-        //    if (Dao.Save())
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

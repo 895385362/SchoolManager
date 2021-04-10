@@ -18,7 +18,7 @@ namespace S1mple_SchoolManagerWeb.Controllers
             return View();
         }
 
-        [AuthorizeFilterAttribute]
+        [AuthorizeFilter]
         [HttpPost]
         public JsonResult GetLoginByPhone(Info_Admin model)
         {

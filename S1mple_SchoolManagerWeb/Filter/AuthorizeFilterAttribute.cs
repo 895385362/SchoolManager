@@ -14,11 +14,13 @@ namespace S1mple_SchoolManagerWeb.Fileter
             var Request = filterContext.HttpContext.Request;
             var Response = filterContext.HttpContext.Response;
             var Admin = CookieHelper.GetCookieValue("userInfo");
+
+
             if (Request.RequestType == "GET")
             {
                 if (Admin == null)
                 {
-                    string loginUrl = System.Configuration.ConfigurationManager.AppSettings["loginUrl"];
+                    string loginUrl = System.Configuration.ConfigurationManager.AppSettings["Login/GetLoginByPhone"];
                     filterContext.Result = new RedirectResult(loginUrl);
                     return;
                 }
@@ -27,7 +29,7 @@ namespace S1mple_SchoolManagerWeb.Fileter
             {
                 if (Admin == null)
                 {
-                    string loginUrl = System.Configuration.ConfigurationManager.AppSettings["loginUrl"];
+                    string loginUrl = System.Configuration.ConfigurationManager.AppSettings["Login/GetLoginByPhone"];
                     JsonResult jresult = new JsonResult();
                     jresult.Data = new { result = 0, msg = "权限已过期" };
                     filterContext.Result = jresult;
