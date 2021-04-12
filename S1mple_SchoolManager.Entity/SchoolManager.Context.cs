@@ -29,7 +29,6 @@ namespace S1mple_SchoolManager.Entity
         public virtual DbSet<Info_Parent> Info_Parent { get; set; }
         public virtual DbSet<Info_Admin> Info_Admin { get; set; }
         public virtual DbSet<Info_Student> Info_Student { get; set; }
-        public virtual DbSet<Info_Teacher> Info_Teacher { get; set; }
         public virtual DbSet<Info_Menu> Info_Menu { get; set; }
         public virtual DbSet<Sys_Nation> Sys_Nation { get; set; }
         public virtual DbSet<O_T_C_N> O_T_C_N { get; set; }
@@ -39,5 +38,7 @@ namespace S1mple_SchoolManager.Entity
         public virtual DbSet<Info_Curriculum> Info_Curriculum { get; set; }
         public virtual DbSet<V_C_S_C> V_C_S_C { get; set; }
         public virtual DbSet<Info_Schedule> Info_Schedule { get; set; }
+        public virtual DbSet<Info_Leave> Info_Leave { get; set; }
+        public virtual DbSet<Info_Teacher> Info_Teacher { get; set; }
     }
 }

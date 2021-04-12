@@ -23,10 +23,10 @@ namespace S1mple_SchoolManager.Entity
         public string TeacherPhone { get; set; }
         public string TeacherEmail { get; set; }
         public string HomeAddress { get; set; }
+        public string Code { get; set; }
         public string TeacherPhotoUrl { get; set; }
         public string TeacherType { get; set; }
         public bool IsDelete { get; set; }
         public string Remark { get; set; }
-        public string Code { get; set; }
     }
 }

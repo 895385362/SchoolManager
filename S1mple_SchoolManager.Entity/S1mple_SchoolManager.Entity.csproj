@@ -64,6 +64,9 @@
     <Compile Include="Info_Curriculum.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Info_Leave.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Info_Menu.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
@@ -80,6 +83,7 @@
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\InfoCurriculumModel.cs" />
+    <Compile Include="Model\InfoLeaveModel.cs" />
     <Compile Include="Model\InfoMenuModel.cs" />
     <Compile Include="Model\InfoScheduleModel.cs" />
     <Compile Include="Model\InfoTeacherModel.cs" />

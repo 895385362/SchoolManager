@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="InfoAdmin_bll.cs" />
     <Compile Include="InfoCurriculum_bll.cs" />
+    <Compile Include="InfoLeave_bll.cs" />
     <Compile Include="InfoMenu_bll.cs" />
     <Compile Include="InfoSchedule_bll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

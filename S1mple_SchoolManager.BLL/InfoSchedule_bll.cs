@@ -51,7 +51,7 @@ namespace S1mple_SchoolManager.BLL
             if (data != null)
             {
                 //反序列化，获取前端传递的数据添加到泛型集合
-                var list = JsonConvert.DeserializeObject<List<Info_Schedule>>(data);
+                var list = JsonConvert.DeserializeObject<List<InfoScheduleModel>>(data);
                 List<Info_Schedule>schedulelist = new List<Info_Schedule>();
                 foreach (var item in list)
                 {

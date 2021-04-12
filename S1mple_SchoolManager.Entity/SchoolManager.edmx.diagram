@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Parent" Width="1.5" PointX="0.75" PointY="6.375" />
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Admin" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Student" Width="1.5" PointX="5.125" PointY="0.75" />
-        <EntityTypeShape EntityType="SchoolManagementModel.Info_Teacher" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Menu" Width="1.5" PointX="3.375" PointY="6.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.Sys_Nation" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.O_T_C_N" Width="1.5" PointX="7.375" PointY="5.75" />
@@ -19,6 +18,8 @@
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Curriculum" Width="1.5" PointX="3.375" PointY="10.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.V_C_S_C" Width="1.5" PointX="11.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Schedule" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SchoolManagementModel.Info_Leave" Width="1.5" PointX="11.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SchoolManagementModel.Info_Teacher" Width="1.5" PointX="9.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

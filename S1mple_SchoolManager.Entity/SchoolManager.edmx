@@ -58,6 +58,21 @@
           <Property Name="Curriculum7" Type="varchar" MaxLength="10" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Info_Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LeaveStuName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LeaveStuNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LeaveStuDepartment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LeaveStuGrade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LeaveStuClass" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LeaveStuReasons" Type="varchar(max)" Nullable="false" />
+          <Property Name="Teacher" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TeacherNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Info_Menu">
           <Key>
             <PropertyRef Name="MenuID" />
@@ -237,6 +252,7 @@
           <EntitySet Name="Info_Admin" EntityType="Self.Info_Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Info_Attendance" EntityType="Self.Info_Attendance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Info_Class" EntityType="Self.Info_Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Info_Leave" EntityType="Self.Info_Leave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Info_Menu" EntityType="Self.Info_Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Info_Parent" EntityType="Self.Info_Parent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Info_Schedule" EntityType="Self.Info_Schedule" Schema="dbo" store:Type="Tables" />
@@ -325,7 +341,6 @@
           <EntitySet Name="Info_Parent" EntityType="SchoolManagementModel.Info_Parent" />
           <EntitySet Name="Info_Admin" EntityType="SchoolManagementModel.Info_Admin" />
           <EntitySet Name="Info_Student" EntityType="SchoolManagementModel.Info_Student" />
-          <EntitySet Name="Info_Teacher" EntityType="SchoolManagementModel.Info_Teacher" />
           <EntitySet Name="Info_Menu" EntityType="SchoolManagementModel.Info_Menu" />
           <EntitySet Name="Sys_Nation" EntityType="SchoolManagementModel.Sys_Nation" />
           <EntitySet Name="O_T_C_N" EntityType="SchoolManagementModel.O_T_C_N" />
@@ -335,6 +350,8 @@
           <EntitySet Name="Info_Curriculum" EntityType="SchoolManagementModel.Info_Curriculum" />
           <EntitySet Name="V_C_S_C" EntityType="SchoolManagementModel.V_C_S_C" />
           <EntitySet Name="Info_Schedule" EntityType="SchoolManagementModel.Info_Schedule" />
+          <EntitySet Name="Info_Leave" EntityType="SchoolManagementModel.Info_Leave" />
+          <EntitySet Name="Info_Teacher" EntityType="SchoolManagementModel.Info_Teacher" />
         </EntityContainer>
         <EntityType Name="Info_Parent">
           <Key>
@@ -389,25 +406,6 @@
           <Property Name="EmergencyPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
           <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Info_Teacher">
-          <Key>
-            <PropertyRef Name="TeacherID" />
-          </Key>
-          <Property Name="TeacherID" Type="Guid" Nullable="false" />
-          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="TeacherSex" Type="Boolean" Nullable="false" />
-          <Property Name="TeacherIDcard" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="TeacherBirth" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TeacherNum" Type="Int32" Nullable="false" />
-          <Property Name="TeacherPhone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TeacherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HomeAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="TeacherPhotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TeacherType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Info_Menu">
           <Key>
@@ -545,6 +543,40 @@
           <Property Name="ScheduleType" Type="Int32" Nullable="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="Info_Leave">
+          <Key>
+            <PropertyRef Name="LeaveID" />
+          </Key>
+          <Property Name="LeaveID" Type="Guid" Nullable="false" />
+          <Property Name="LeaveStuName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveStuNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveStuDepartment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveStuGrade" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveStuClass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaveStuReasons" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Teacher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TeacherNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Info_Teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="Guid" Nullable="false" />
+          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TeacherSex" Type="Boolean" Nullable="false" />
+          <Property Name="TeacherIDcard" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="TeacherBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TeacherNum" Type="Int32" Nullable="false" />
+          <Property Name="TeacherPhone" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TeacherEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HomeAddress" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TeacherPhotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TeacherType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -617,26 +649,6 @@
                 <ScalarProperty Name="StudentSex" ColumnName="StudentSex" />
                 <ScalarProperty Name="StudentName" ColumnName="StudentName" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Info_Teacher">
-            <EntityTypeMapping TypeName="SchoolManagementModel.Info_Teacher">
-              <MappingFragment StoreEntitySet="Info_Teacher">
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="TeacherType" ColumnName="TeacherType" />
-                <ScalarProperty Name="TeacherPhotoUrl" ColumnName="TeacherPhotoUrl" />
-                <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
-                <ScalarProperty Name="TeacherEmail" ColumnName="TeacherEmail" />
-                <ScalarProperty Name="TeacherPhone" ColumnName="TeacherPhone" />
-                <ScalarProperty Name="TeacherNum" ColumnName="TeacherNum" />
-                <ScalarProperty Name="TeacherBirth" ColumnName="TeacherBirth" />
-                <ScalarProperty Name="TeacherIDcard" ColumnName="TeacherIDcard" />
-                <ScalarProperty Name="TeacherSex" ColumnName="TeacherSex" />
-                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
-                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -761,6 +773,42 @@
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="Schedule" ColumnName="Schedule" />
                 <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Info_Leave">
+            <EntityTypeMapping TypeName="SchoolManagementModel.Info_Leave">
+              <MappingFragment StoreEntitySet="Info_Leave">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="TeacherNum" ColumnName="TeacherNum" />
+                <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+                <ScalarProperty Name="LeaveStuReasons" ColumnName="LeaveStuReasons" />
+                <ScalarProperty Name="LeaveStuClass" ColumnName="LeaveStuClass" />
+                <ScalarProperty Name="LeaveStuGrade" ColumnName="LeaveStuGrade" />
+                <ScalarProperty Name="LeaveStuDepartment" ColumnName="LeaveStuDepartment" />
+                <ScalarProperty Name="LeaveStuNum" ColumnName="LeaveStuNum" />
+                <ScalarProperty Name="LeaveStuName" ColumnName="LeaveStuName" />
+                <ScalarProperty Name="LeaveID" ColumnName="LeaveID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Info_Teacher">
+            <EntityTypeMapping TypeName="SchoolManagementModel.Info_Teacher">
+              <MappingFragment StoreEntitySet="Info_Teacher">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="TeacherType" ColumnName="TeacherType" />
+                <ScalarProperty Name="TeacherPhotoUrl" ColumnName="TeacherPhotoUrl" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+                <ScalarProperty Name="TeacherEmail" ColumnName="TeacherEmail" />
+                <ScalarProperty Name="TeacherPhone" ColumnName="TeacherPhone" />
+                <ScalarProperty Name="TeacherNum" ColumnName="TeacherNum" />
+                <ScalarProperty Name="TeacherBirth" ColumnName="TeacherBirth" />
+                <ScalarProperty Name="TeacherIDcard" ColumnName="TeacherIDcard" />
+                <ScalarProperty Name="TeacherSex" ColumnName="TeacherSex" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
