@@ -20,7 +20,6 @@ namespace S1mple_SchoolManagerWeb.Controllers
         [HttpPost]
         public JsonResult GetCurriculumList()
         {
-
             ViewCurriculum_bll viewCurriculumBll = new ViewCurriculum_bll();
             JsonResult jr = new JsonResult();
             List<V_C_S_C> curriculumList = viewCurriculumBll.GetList().ToList();

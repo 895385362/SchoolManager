@@ -26,13 +26,20 @@ namespace S1mple_SchoolManager.BLL
             //获取Model实体
             return Dao.GetEntities<Info_Schedule>(x => x.ScheduleID == ID).FirstOrDefault();
         }
-        public bool Delete(int ID)
+        public bool Delete(int ScheduleType)
         {
             //物理删除
-            if (ID != 0)
+            if (ScheduleType>0)
             {
-                Info_Schedule model = Dao.GetEntities<Info_Schedule>(x => x.ScheduleID == ID).FirstOrDefault(); ;
-                Dao.Delete<Info_Schedule>(model);
+              var list =  Dao.GetEntities<Info_Schedule>(x => x.ScheduleType == ScheduleType).ToList();
+                if (list.Count!=0)
+                {
+                    Dao.Delete(list);
+                }
+                else
+                {
+                    return true;
+                }
             }
             if (Dao.Save())
             {
@@ -45,54 +52,78 @@ namespace S1mple_SchoolManager.BLL
 
         }
 
-        public bool Operation(string ScheduleType, string data)
+        public bool Operation(int ScheduleType, string data)
         {
+            bool flag1 = false;
             //修改
             if (data != null)
             {
                 //反序列化，获取前端传递的数据添加到泛型集合
-                var list = JsonConvert.DeserializeObject<List<InfoScheduleModel>>(data);
+                var list = JsonConvert.DeserializeObject<List<Info_Schedule>>(data);
                 List<Info_Schedule>schedulelist = new List<Info_Schedule>();
-                foreach (var item in list)
+                InfoSchedule_bll infoScheduleBll = new InfoSchedule_bll();
+                bool flag = infoScheduleBll.Delete(ScheduleType);
+
+                if (flag)
                 {
-                    if (item.ScheduleID>0)
+                    foreach (var item in list)
                     {
-                        Info_Schedule model = GetModel(item.ScheduleID);
-                        if (model != null)
+                        if (item.ScheduleID > 0)
                         {
-                            if (model.ScheduleID != 0)
+                            //Info_Schedule model = GetModel(item.ScheduleID);
+                            //if (model != null)
+                            //{
+                            //    if (model.ScheduleID != 0)
+                            //    {
+                            //        model.Schedule = item.Schedule;
+                            //        model.StartTime = item.StartTime;
+                            //        model.EndTime = item.EndTime;
+                            //        schedulelist.Add(model);
+                            //    }
+                            //}
+                            schedulelist.Add(item);
+
+                            if (schedulelist.Count > 0)
                             {
-                                model.Schedule = item.Schedule;
-                                model.StartTime = item.StartTime;
-                                model.EndTime = item.EndTime;
-                                schedulelist.Add(model);
+                                Dao.Create(schedulelist);
+    
                             }
+
+
+
+
+                            //if (schedulelist.Count > 0)
+                            //{
+                            //    Dao.Update(schedulelist);
+                            //    if (Dao.Save())
+                            //    {
+                            //        return true;
+                            //    }
+                            //} 
                         }
-                        if (schedulelist.Count > 0)
-                        {
-                            Dao.Update(schedulelist);
-                            if (Dao.Save())
-                            {
-                                return true;
-                            }
-                        }
+
+
+
+                        //else
+                        //{
+                        //    if (schedulelist.Count > 0)
+                        //    {
+                        //        Dao.Create(schedulelist);
+                        //        if (Dao.Save())
+                        //        {
+                        //            return true;
+                        //        }
+                        //    }
+                        //}
                     }
-                    else
+                    if (Dao.Save())
                     {
-                        if (schedulelist.Count > 0)
-                        {
-                            Dao.Create(schedulelist);
-                            if (Dao.Save())
-                            {
-                                return true;
-                            }
-                        }
+                        flag1 = true;
+                        return flag1;
                     }
-                   
                 }
-               
             }
-            return false;
+            return flag1;
         }
     }
 }

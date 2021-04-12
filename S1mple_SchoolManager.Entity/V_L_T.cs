@@ -12,11 +12,11 @@ namespace S1mple_SchoolManager.Entity
     using System;
     using System.Collections.Generic;
     
-    public partial class O_C_S_C
+    public partial class V_L_T
     {
-        public int ID { get; set; }
-        public int CurriculumID { get; set; }
-        public System.Guid ClassID { get; set; }
+        public string TeacherName { get; set; }
+        public string Locus { get; set; }
+        public System.DateTime Time { get; set; }
         public bool IsDelete { get; set; }
     }
 }

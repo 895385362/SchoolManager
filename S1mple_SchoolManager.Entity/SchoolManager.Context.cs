@@ -34,11 +34,18 @@ namespace S1mple_SchoolManager.Entity
         public virtual DbSet<O_T_C_N> O_T_C_N { get; set; }
         public virtual DbSet<V_T_C_N> V_T_C_N { get; set; }
         public virtual DbSet<Info_Attendance> Info_Attendance { get; set; }
-        public virtual DbSet<O_C_S_C> O_C_S_C { get; set; }
-        public virtual DbSet<Info_Curriculum> Info_Curriculum { get; set; }
-        public virtual DbSet<V_C_S_C> V_C_S_C { get; set; }
         public virtual DbSet<Info_Schedule> Info_Schedule { get; set; }
         public virtual DbSet<Info_Leave> Info_Leave { get; set; }
         public virtual DbSet<Info_Teacher> Info_Teacher { get; set; }
+        public virtual DbSet<O_C_S_C> O_C_S_C { get; set; }
+        public virtual DbSet<O_S_T_C> O_S_T_C { get; set; }
+        public virtual DbSet<Info_Curriculum> Info_Curriculum { get; set; }
+        public virtual DbSet<V_C_S_C> V_C_S_C { get; set; }
+        public virtual DbSet<V_S_T_C> V_S_T_C { get; set; }
+        public virtual DbSet<Info_Location> Info_Location { get; set; }
+        public virtual DbSet<O_L_S> O_L_S { get; set; }
+        public virtual DbSet<V_L_S> V_L_S { get; set; }
+        public virtual DbSet<O_L_T> O_L_T { get; set; }
+        public virtual DbSet<V_L_T> V_L_T { get; set; }
     }
 }

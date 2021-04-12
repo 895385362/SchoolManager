@@ -126,10 +126,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AttendanceListController.cs" />
     <Compile Include="Controllers\CurriculumListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\LeaveManagerController.cs" />
+    <Compile Include="Controllers\LocationManagerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ScheduleManagerController.cs" />
     <Compile Include="Controllers\TeacherListController.cs" />
@@ -187,8 +189,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="log\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AttendanceList\" />
     <Folder Include="Views\HomePage\" />
     <Folder Include="Views\LeaveManager\" />
+    <Folder Include="Views\LocationManager\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

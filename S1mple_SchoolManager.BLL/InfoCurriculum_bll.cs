@@ -25,7 +25,7 @@ namespace S1mple_SchoolManager.BLL
 
         public O_C_S_C GetModels(int CurriculumID, int ScheduleID, Guid ClassID)
         {
-            return Dao.GetEntities<O_C_S_C>(x => x.CurriculumID == CurriculumID & x.ScheduleID == ScheduleID & x.ClassID == ClassID).FirstOrDefault();
+            return Dao.GetEntities<O_C_S_C>(x => x.CurriculumID == CurriculumID & x.ClassID == ClassID).FirstOrDefault();
         }
 
         public bool Operation(string data)
@@ -37,7 +37,7 @@ namespace S1mple_SchoolManager.BLL
                 var list = JsonConvert.DeserializeObject<List<InfoCurriculumModel>>(data);
                 List<Info_Curriculum> curriculumlistEdit = new List<Info_Curriculum>();
                 List<Info_Curriculum> curriculumlistAdd = new List<Info_Curriculum>();
-               
+
                 //循环json集合
                 foreach (var item in list)
                 {
@@ -54,6 +54,8 @@ namespace S1mple_SchoolManager.BLL
                             if (model.CurriculumID != 0)
                             {
                                 #region 更新
+                                model.StartTime = item.StartTime;
+                                model.EndTime = item.EndTime;
                                 model.Curriculum1 = item.Curriculum1;
                                 model.Curriculum2 = item.Curriculum2;
                                 model.Curriculum3 = item.Curriculum3;
@@ -71,6 +73,8 @@ namespace S1mple_SchoolManager.BLL
                             #region 添加
                             //没查询到也要添加
                             model = new Info_Curriculum();
+                            model.StartTime = item.StartTime;
+                            model.EndTime = item.EndTime;
                             model.Curriculum1 = item.Curriculum1;
                             model.Curriculum2 = item.Curriculum2;
                             model.Curriculum3 = item.Curriculum3;
@@ -86,6 +90,8 @@ namespace S1mple_SchoolManager.BLL
                     {
                         #region 添加
                         Info_Curriculum model = new Info_Curriculum();
+                        model.StartTime = item.StartTime;
+                        model.EndTime = item.EndTime;
                         model.Curriculum1 = item.Curriculum1;
                         model.Curriculum2 = item.Curriculum2;
                         model.Curriculum3 = item.Curriculum3;
@@ -103,7 +109,6 @@ namespace S1mple_SchoolManager.BLL
                 {
                     models = new O_C_S_C();
                     models.CurriculumID = list.FirstOrDefault().CurriculumID;
-                    models.ScheduleID = list.FirstOrDefault().ScheduleID;
                     models.ClassID = list.FirstOrDefault().ClassID;
                     Dao.Create(models);
                 }
@@ -117,7 +122,7 @@ namespace S1mple_SchoolManager.BLL
                 {
                     Dao.Create(curriculumlistAdd);
                 }
-                
+
                 if (Dao.Save())
                 {
                     return true;

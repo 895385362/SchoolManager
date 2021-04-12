@@ -39,7 +39,7 @@ namespace S1mple_SchoolManagerWeb.Controllers
         }
 
         [HttpPost]
-        public JsonResult ChangeSchedule(string ScheduleType, string data)
+        public JsonResult ChangeSchedule(int ScheduleType, string data)
         {
             try
             {

@@ -18,7 +18,7 @@ namespace S1mple_SchoolManager.Entity
         public string StudentName { get; set; }
         public bool StudentSex { get; set; }
         public string StudentIDcard { get; set; }
-        public System.DateTime StudentBirth { get; set; }
+        public Nullable<System.DateTime> StudentBirth { get; set; }
         public int StudentNum { get; set; }
         public string StudentNation { get; set; }
         public string StudentContacts { get; set; }

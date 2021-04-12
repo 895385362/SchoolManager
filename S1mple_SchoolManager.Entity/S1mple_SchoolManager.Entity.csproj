@@ -67,6 +67,9 @@
     <Compile Include="Info_Leave.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Info_Location.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Info_Menu.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
@@ -88,6 +91,15 @@
     <Compile Include="Model\InfoScheduleModel.cs" />
     <Compile Include="Model\InfoTeacherModel.cs" />
     <Compile Include="O_C_S_C.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_L_S.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_L_T.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="O_S_T_C.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
     <Compile Include="O_T_C_N.cs">
@@ -114,6 +126,15 @@
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
     <Compile Include="V_C_S_C.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_L_S.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_L_T.cs">
+      <DependentUpon>SchoolManager.tt</DependentUpon>
+    </Compile>
+    <Compile Include="V_S_T_C.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
     <Compile Include="V_T_C_N.cs">

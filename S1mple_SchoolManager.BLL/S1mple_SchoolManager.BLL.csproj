@@ -57,7 +57,9 @@
     <Compile Include="InfoMenu_bll.cs" />
     <Compile Include="InfoSchedule_bll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewAttendance_bll.cs" />
     <Compile Include="ViewCurriculum_bll.cs" />
+    <Compile Include="ViewLocation_bll.cs" />
     <Compile Include="ViewTeacher_bll.cs" />
   </ItemGroup>
   <ItemGroup>

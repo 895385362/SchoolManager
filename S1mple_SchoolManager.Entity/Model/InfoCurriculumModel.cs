@@ -9,6 +9,8 @@ namespace S1mple_SchoolManager.Entity.Model
     public class InfoCurriculumModel
     {
         public int CurriculumID { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
         public string Curriculum1 { get; set; }
         public string Curriculum2 { get; set; }
         public string Curriculum3 { get; set; }
