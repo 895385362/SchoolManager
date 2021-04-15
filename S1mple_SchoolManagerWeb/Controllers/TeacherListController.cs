@@ -42,6 +42,24 @@ namespace S1mple_SchoolManagerWeb.Controllers
             return jr;
         }
 
+        [HttpPost]
+        public JsonResult GetNation()
+        {
+            InfoNation_bll nationbll = new InfoNation_bll();
+            JsonResult jr = new JsonResult();
+            List<Sys_Nation> Nationlist = nationbll.GetList().ToList();
+            if (Nationlist.Count != 0)
+            {
+                jr.Data = new { code = 10000, result = true, message = "查询成功!", data = Nationlist.ToList() };
+
+            }
+            else
+            {
+                jr.Data = new { code = 10001, result = false, message = "查询失败!" };
+            }
+            return jr;
+        }
+
 
         [HttpPost]
         public JsonResult ChangeTeacher(string data, int code)
