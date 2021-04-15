@@ -16,7 +16,13 @@ namespace S1mple_SchoolManager.BLL
         {
             Dao = new GenericRepository();
         }
-        public List<Info_Leave> GetList()
+        public List<Info_Leave> GetList(string _search)
+        {
+            //查询 
+            return Dao.GetEntities<Info_Leave>(x => x.IsDelete == false && x.LeaveStuName == _search||x.LeaveStuNum == _search||x.Teacher == _search||x.TeacherNum == _search).ToList();
+        }
+
+        public List<Info_Leave> GetListAll()
         {
             //查询 
             return Dao.GetEntities<Info_Leave>(x => x.IsDelete == false).ToList();
@@ -27,11 +33,11 @@ namespace S1mple_SchoolManager.BLL
             return Dao.GetEntities<Info_Leave>(x => x.LeaveID == ID).FirstOrDefault();
         }
 
-        //public InfoLeaveModel GetLeaveModel(string ID)
-        //{
-        //    //获取Model实体
-        //    return Dao.GetEntities<InfoLeaveModel>(x => x.LeaveID == ID).FirstOrDefault();
-        //}
+        public InfoLeaveModel GetLeaveModel(string ID)
+        {
+            //获取Model实体
+            return Dao.GetEntities<InfoLeaveModel>(x => x.LeaveID == ID).FirstOrDefault();
+        }
 
         public bool Delete(Guid ID)
         {
@@ -52,7 +58,25 @@ namespace S1mple_SchoolManager.BLL
 
         }
 
-        public bool Operation(string data)
+        public bool Edit(string state , int num)
+        {
+            if (state != null)
+            {
+                Info_Leave infoLeaveModel = GetModel(new Guid(state));
+                if (infoLeaveModel != null)
+                {
+                    infoLeaveModel.state = num;
+                }
+                Dao.Update(infoLeaveModel);
+                if (Dao.Save())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool Operation(string data , int num)
         {
             //修改
             if (data != null)
@@ -77,6 +101,7 @@ namespace S1mple_SchoolManager.BLL
                                 model.LeaveStuReasons = item.LeaveStuReasons;
                                 model.Teacher = item.Teacher;
                                 model.TeacherNum = item.TeacherNum;
+                                model.state = num;
                                 leavelist.Add(model);
                             }
                         }

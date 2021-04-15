@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AttendanceListController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CurriculumListController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
@@ -190,6 +191,7 @@
     <Folder Include="log\" />
     <Folder Include="Models\" />
     <Folder Include="Views\AttendanceList\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\HomePage\" />
     <Folder Include="Views\LeaveManager\" />
     <Folder Include="Views\LocationManager\" />

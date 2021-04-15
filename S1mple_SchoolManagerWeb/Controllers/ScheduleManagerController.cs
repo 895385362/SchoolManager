@@ -7,10 +7,11 @@ using S1mple_SchoolManager.BLL;
 using S1mple_SchoolManager.Common;
 using S1mple_SchoolManager.Entity;
 using S1mple_SchoolManager.Entity.Model;
+using S1mple_SchoolManagerWeb.Fileter;
 
 namespace S1mple_SchoolManagerWeb.Controllers
 {
-    public class ScheduleManagerController : Controller
+    public class ScheduleManagerController : BaseController
     {
         // GET: ScheduleManager
         public ActionResult ScheduleManager()
@@ -18,10 +19,15 @@ namespace S1mple_SchoolManagerWeb.Controllers
             return View();
         }
 
+        [AuthorizeFilterAttribute]
         [HttpPost]
-        public JsonResult GetScheduleList(Info_Schedule model)
+        public JsonResult GetCheckTimeByClass(Info_Schedule model)
         {
-
+            CookieModel modelssss = new CookieModel();
+            if (string.IsNullOrEmpty(modelssss.UserCookieID) && string.IsNullOrEmpty(modelssss.UserCookieName) && string.IsNullOrEmpty(modelssss.UserCookiePwd))
+            {
+                return new JsonResult() { Data = new { code = 10002, result = 0, message = "权限已过期" } };
+            }
             InfoSchedule_bll infoSchedulebll = new InfoSchedule_bll();
             JsonResult jr = new JsonResult();
             List<Info_Schedule> schedulelist = infoSchedulebll.GetList(model.ScheduleType).ToList();
@@ -38,11 +44,17 @@ namespace S1mple_SchoolManagerWeb.Controllers
             return jr;
         }
 
+        [AuthorizeFilterAttribute]
         [HttpPost]
         public JsonResult ChangeSchedule(int ScheduleType, string data)
         {
             try
             {
+                CookieModel modelssss = new CookieModel();
+                if (string.IsNullOrEmpty(modelssss.UserCookieID) && string.IsNullOrEmpty(modelssss.UserCookieName) && string.IsNullOrEmpty(modelssss.UserCookiePwd))
+                {
+                    return new JsonResult() { Data = new { code = 10002, result = 0, message = "权限已过期" } };
+                }
                 InfoSchedule_bll infoScheduleBll = new InfoSchedule_bll();
                 JsonResult jr = new JsonResult();
                 bool result = infoScheduleBll.Operation(ScheduleType, data);
@@ -58,7 +70,7 @@ namespace S1mple_SchoolManagerWeb.Controllers
             }
             catch (Exception ex)
             {
-                FileHelper.Log("Admin", ex.Message,"");
+                FileHelper.Log("Admin", ex.Message, "");
                 throw;
             }
         }

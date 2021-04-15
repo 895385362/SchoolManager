@@ -22,11 +22,11 @@
         <EntityTypeShape EntityType="SchoolManagementModel.Info_Curriculum" Width="1.5" PointX="3.75" PointY="10.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.V_C_S_C" Width="1.5" PointX="3" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.V_S_T_C" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="SchoolManagementModel.Info_Location" Width="1.5" PointX="7.375" PointY="14.375" />
-        <EntityTypeShape EntityType="SchoolManagementModel.O_L_S" Width="1.5" PointX="0.75" PointY="13.75" />
-        <EntityTypeShape EntityType="SchoolManagementModel.V_L_S" Width="1.5" PointX="13.375" PointY="8.75" />
-        <EntityTypeShape EntityType="SchoolManagementModel.O_L_T" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SchoolManagementModel.O_L_T" Width="1.5" PointX="12.375" PointY="0.75" />
         <EntityTypeShape EntityType="SchoolManagementModel.V_L_T" Width="1.5" PointX="3.375" PointY="14.75" />
+        <EntityTypeShape EntityType="SchoolManagementModel.Info_Location" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SchoolManagementModel.O_L_S" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SchoolManagementModel.V_L_S" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

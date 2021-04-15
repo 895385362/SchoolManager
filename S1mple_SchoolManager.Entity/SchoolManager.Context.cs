@@ -42,10 +42,10 @@ namespace S1mple_SchoolManager.Entity
         public virtual DbSet<Info_Curriculum> Info_Curriculum { get; set; }
         public virtual DbSet<V_C_S_C> V_C_S_C { get; set; }
         public virtual DbSet<V_S_T_C> V_S_T_C { get; set; }
+        public virtual DbSet<O_L_T> O_L_T { get; set; }
+        public virtual DbSet<V_L_T> V_L_T { get; set; }
         public virtual DbSet<Info_Location> Info_Location { get; set; }
         public virtual DbSet<O_L_S> O_L_S { get; set; }
         public virtual DbSet<V_L_S> V_L_S { get; set; }
-        public virtual DbSet<O_L_T> O_L_T { get; set; }
-        public virtual DbSet<V_L_T> V_L_T { get; set; }
     }
 }

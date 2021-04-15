@@ -73,6 +73,7 @@
           <Property Name="LeaveStuReasons" Type="varchar(max)" Nullable="false" />
           <Property Name="Teacher" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TeacherNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Info_Location">
@@ -81,7 +82,7 @@
           </Key>
           <Property Name="LocationID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Locus" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Info_Menu">
@@ -262,7 +263,7 @@
           </Key>
           <Property Name="StudentName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Locus" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IsDelete" Type="bit" Nullable="false" />
         </EntityType>
         <!--生成过程中发现错误:
@@ -495,11 +496,11 @@
           <EntitySet Name="Info_Curriculum" EntityType="SchoolManagementModel.Info_Curriculum" />
           <EntitySet Name="V_C_S_C" EntityType="SchoolManagementModel.V_C_S_C" />
           <EntitySet Name="V_S_T_C" EntityType="SchoolManagementModel.V_S_T_C" />
+          <EntitySet Name="O_L_T" EntityType="SchoolManagementModel.O_L_T" />
+          <EntitySet Name="V_L_T" EntityType="SchoolManagementModel.V_L_T" />
           <EntitySet Name="Info_Location" EntityType="SchoolManagementModel.Info_Location" />
           <EntitySet Name="O_L_S" EntityType="SchoolManagementModel.O_L_S" />
           <EntitySet Name="V_L_S" EntityType="SchoolManagementModel.V_L_S" />
-          <EntitySet Name="O_L_T" EntityType="SchoolManagementModel.O_L_T" />
-          <EntitySet Name="V_L_T" EntityType="SchoolManagementModel.V_L_T" />
         </EntityContainer>
         <EntityType Name="Info_Parent">
           <Key>
@@ -663,6 +664,7 @@
           <Property Name="Teacher" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TeacherNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="state" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Info_Teacher">
           <Key>
@@ -752,13 +754,37 @@
           <Property Name="TeacherNum" Type="Int32" Nullable="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
         </EntityType>
+        <EntityType Name="O_L_T">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="LocationID" />
+            <PropertyRef Name="TeacherID" />
+            <PropertyRef Name="IsDelete" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="LocationID" Type="Guid" Nullable="false" />
+          <Property Name="TeacherID" Type="Guid" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="V_L_T">
+          <Key>
+            <PropertyRef Name="TeacherName" />
+            <PropertyRef Name="Locus" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="IsDelete" />
+          </Key>
+          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Locus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="Info_Location">
           <Key>
             <PropertyRef Name="LocationID" />
           </Key>
           <Property Name="LocationID" Type="Guid" Nullable="false" />
           <Property Name="Locus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="O_L_S">
@@ -782,31 +808,7 @@
           </Key>
           <Property Name="StudentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Locus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="O_L_T">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="LocationID" />
-            <PropertyRef Name="TeacherID" />
-            <PropertyRef Name="IsDelete" />
-          </Key>
-          <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="LocationID" Type="Guid" Nullable="false" />
-          <Property Name="TeacherID" Type="Guid" Nullable="false" />
-          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="V_L_T">
-          <Key>
-            <PropertyRef Name="TeacherName" />
-            <PropertyRef Name="Locus" />
-            <PropertyRef Name="Time" />
-            <PropertyRef Name="IsDelete" />
-          </Key>
-          <Property Name="TeacherName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Locus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsDelete" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
@@ -969,6 +971,7 @@
           <EntitySetMapping Name="Info_Leave">
             <EntityTypeMapping TypeName="SchoolManagementModel.Info_Leave">
               <MappingFragment StoreEntitySet="Info_Leave">
+                <ScalarProperty Name="state" ColumnName="state" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="TeacherNum" ColumnName="TeacherNum" />
                 <ScalarProperty Name="Teacher" ColumnName="Teacher" />
@@ -1069,6 +1072,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="O_L_T">
+            <EntityTypeMapping TypeName="SchoolManagementModel.O_L_T">
+              <MappingFragment StoreEntitySet="O_L_T">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_L_T">
+            <EntityTypeMapping TypeName="SchoolManagementModel.V_L_T">
+              <MappingFragment StoreEntitySet="V_L_T">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Locus" ColumnName="Locus" />
+                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Info_Location">
             <EntityTypeMapping TypeName="SchoolManagementModel.Info_Location">
               <MappingFragment StoreEntitySet="Info_Location">
@@ -1096,26 +1119,6 @@
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Locus" ColumnName="Locus" />
                 <ScalarProperty Name="StudentName" ColumnName="StudentName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="O_L_T">
-            <EntityTypeMapping TypeName="SchoolManagementModel.O_L_T">
-              <MappingFragment StoreEntitySet="O_L_T">
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="V_L_T">
-            <EntityTypeMapping TypeName="SchoolManagementModel.V_L_T">
-              <MappingFragment StoreEntitySet="V_L_T">
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Locus" ColumnName="Locus" />
-                <ScalarProperty Name="TeacherName" ColumnName="TeacherName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

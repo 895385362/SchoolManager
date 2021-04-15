@@ -17,6 +17,7 @@ namespace S1mple_SchoolManagerWeb.Controllers
             return View();
         }
 
+
         [HttpPost]
         public JsonResult GetMenuByList()
         {

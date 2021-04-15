@@ -13,25 +13,31 @@ namespace S1mple_SchoolManagerWeb.Fileter
         {
             var Request = filterContext.HttpContext.Request;
             var Response = filterContext.HttpContext.Response;
-            var Admin = CookieHelper.GetCookieValue("userInfo");
-
+            var AdminID = CookieHelper.GetCookieValue("ID");
+            var AdminName = CookieHelper.GetCookieValue("Name");
+            var AdminPwd = CookieHelper.GetCookieValue("Password");
 
             if (Request.RequestType == "GET")
             {
-                if (Admin == null)
+                if (AdminID == null && AdminName == null && AdminPwd == null)
                 {
-                    string loginUrl = System.Configuration.ConfigurationManager.AppSettings["Login/GetLoginByPhone"];
-                    filterContext.Result = new RedirectResult(loginUrl);
+                    JsonResult jresult = new JsonResult();
+                    jresult.Data = new { code = 10002, result = 0, message = "权限已过期" };
+                    filterContext.Result = new RedirectResult("~/GetLoginByPhone");
+                    filterContext.Result = jresult;
+                    CookieHelper.ClearCookie(AdminID);
+                    CookieHelper.ClearCookie(AdminName);
+                    CookieHelper.ClearCookie(AdminPwd);
                     return;
                 }
             }
             else
             {
-                if (Admin == null)
+                if (AdminID == null)
                 {
-                    string loginUrl = System.Configuration.ConfigurationManager.AppSettings["Login/GetLoginByPhone"];
                     JsonResult jresult = new JsonResult();
-                    jresult.Data = new { result = 0, msg = "权限已过期" };
+                    jresult.Data = new { code = 10002, result = 0, message = "权限已过期" };
+                    filterContext.Result = new RedirectResult("~/GetLoginByPhone");
                     filterContext.Result = jresult;
                     return;
                 }

@@ -85,6 +85,7 @@
     <Compile Include="Info_Teacher.cs">
       <DependentUpon>SchoolManager.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CookieModel.cs" />
     <Compile Include="Model\InfoCurriculumModel.cs" />
     <Compile Include="Model\InfoLeaveModel.cs" />
     <Compile Include="Model\InfoMenuModel.cs" />
@@ -168,6 +169,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\S1mple_SchoolManager.Common\S1mple_SchoolManager.Common.csproj">
+      <Project>{9D524C7C-5996-40BF-B783-E1B731039307}</Project>
+      <Name>S1mple_SchoolManager.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -16,7 +16,7 @@ namespace S1mple_SchoolManager.Entity
     {
         public System.Guid LocationID { get; set; }
         public string Locus { get; set; }
-        public System.DateTime Time { get; set; }
+        public string Time { get; set; }
         public bool IsDelete { get; set; }
     }
 }

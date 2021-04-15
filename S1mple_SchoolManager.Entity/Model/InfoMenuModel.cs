@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using S1mple_SchoolManager.Common;
 
 namespace S1mple_SchoolManager.Entity.Model
 {

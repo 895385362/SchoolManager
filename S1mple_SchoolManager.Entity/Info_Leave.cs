@@ -24,5 +24,6 @@ namespace S1mple_SchoolManager.Entity
         public string Teacher { get; set; }
         public string TeacherNum { get; set; }
         public bool IsDelete { get; set; }
+        public int state { get; set; }
     }
 }

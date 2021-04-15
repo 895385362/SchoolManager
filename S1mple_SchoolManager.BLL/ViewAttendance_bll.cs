@@ -14,10 +14,10 @@ namespace S1mple_SchoolManager.BLL
         {
             Dao = new GenericRepository();
         }
-        public List<V_S_T_C> GetList()
+        public List<V_S_T_C> GetList(string _search)
         {
             //查询 
-            return Dao.GetEntities<V_S_T_C>(x => x.IsDelete == false).ToList();
+            return Dao.GetEntities<V_S_T_C>(x => x.IsDelete == false && x.StudentName == _search|| x.TeacherName == _search).ToList();
         }
     }
 }
